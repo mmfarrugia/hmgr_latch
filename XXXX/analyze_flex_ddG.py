@@ -16,7 +16,8 @@ import threading
 
 rosetta_output_file_name = 'rosetta.out'
 output_database_name = 'ddG.db3'
-trajectory_stride = 5 # set to 1 for better averaging
+trajectory_stride = 1 # set to 1 for better averaging
+calc_resolution = 1 # set to 10 for worse averaging
 script_output_folder = 'analysis_output'
 
 zemu_gam_params = {
@@ -118,8 +119,8 @@ def calc_ddg( scores ):
     total_structs = np.max( scores['struct_num'] )
 
     nstructs_to_analyze = set([total_structs])
-    for x in range(10, total_structs):
-        if x % 10 == 0:
+    for x in range(calc_resolution, total_structs):
+        if x % calc_resolution == 0:
             nstructs_to_analyze.add(x)
     nstructs_to_analyze = sorted(nstructs_to_analyze)
 
@@ -151,8 +152,8 @@ def calc_dgs( scores ):
     total_structs = np.max( scores['struct_num'] )
 
     nstructs_to_analyze = set([total_structs])
-    for x in range(10, total_structs):
-        if x % 10 == 0:
+    for x in range(calc_resolution, total_structs):
+        if x % calc_resolution == 0:
             nstructs_to_analyze.add(x)
     nstructs_to_analyze = sorted(nstructs_to_analyze)
 
