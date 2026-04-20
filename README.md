@@ -1,0 +1,1 @@
+A template for running batches of computational site-saturation mutagenesis with Rosetta ddGFlex as array jobs on an HPC. It accounts for residues in multiple chains and speeds up the process by automating file and folder creation as well as residue specifications.
